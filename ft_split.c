@@ -31,7 +31,6 @@ int	w_count(const char *s, char c)
 			count++;
 		i++;
 	}
-	printf("words: %d\n", count);
 	return (count);
 }
 
@@ -49,7 +48,6 @@ int	w_len(const char *s, char c, int j)
 		count++;
 		j++;
 	}
-	printf("length: %d\n", count);
 	return (count);
 }
 
@@ -60,7 +58,6 @@ int	w_start(const char *s, char c, int j, int word_l)
 		return (j);
 	while (s[j] == c)
 		j++;
-	printf("start: %d\n", j);
 	return (j);
 }
 
@@ -112,15 +109,16 @@ char	**ft_split(const char *s, char c)
 
 int	main(void)
 {
-	const char	s[] = "hola";
+	const char	s[] = "hola que tal estas? ";
 	char		c = ' ';
 	char		**matrix = ft_split(s, c);
 	int			i = 0;
 
-	while (matrix)
+	while (matrix[i])
 	{
 		printf("%s\n", matrix[i]);
 		i++;
 	}
+	free (matrix);
 	return (0);
 }
