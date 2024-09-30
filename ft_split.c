@@ -78,7 +78,7 @@ char	**matrix_errors(char **matrix, int i, int mark)
 	}
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split(const char *str, char c)
 {
 	int		word_c;
 	int		word_l;
@@ -86,20 +86,20 @@ char	**ft_split(const char *s, char c)
 	int		j;
 	char	**matrix;
 
-	word_c = w_count(s, c);
+	word_c = w_count(str, c);
 	matrix = malloc(sizeof(char *) * (word_c + 1));
-	if (!matrix || !s)
+	if (!matrix || !str)
 		return (NULL);
 	i = -1;
 	j = 0;
 	word_l = 0;
 	while (++i < word_c)
 	{
-		j = w_start(s, c, j, word_l);
-		word_l = w_len(s, c, j);
-		if (s[0] == '\0')
+		j = w_start(str, c, j, word_l);
+		word_l = w_len(str, c, j);
+		if (str[0] == '\0')
 			return (matrix_errors(matrix, i, 1));
-		matrix[i] = ft_substr(s, j, word_l);
+		matrix[i] = ft_substr(str, j, word_l);
 		if (!matrix[i])
 			return (matrix_errors(matrix, i, 2));
 	}
@@ -109,9 +109,9 @@ char	**ft_split(const char *s, char c)
 
 int	main(void)
 {
-	const char	s[] = "hola que tal estas? ";
+	const char	str[] = "   hola   que tal estas? ";
 	char		c = ' ';
-	char		**matrix = ft_split(s, c);
+	char		**matrix = ft_split(str, c);
 	int			i = 0;
 
 	while (matrix[i])
